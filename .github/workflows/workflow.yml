@@ -38,7 +38,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
 
       - name: Compile ts
         run: (cd ts && npx tsc -p tsconfig.json)
