@@ -1,0 +1,17 @@
+{
+  "name": "image-data",
+  "type": "module",
+  "version": "0.0.1",
+  "files": [
+    "./index.js",
+    "./index.d.ts",
+    "./pkg/file_inspector_bg.wasm",
+    "./pkg/file_inspector.js",
+    "./pkg/file_inspector.d.ts"
+  ],
+  "main": "index.js",
+  "types": "index.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}
