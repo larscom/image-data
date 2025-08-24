@@ -24,13 +24,17 @@ jobs:
       - name: Install Binaryen (wasm-opt)
         run: |
           sudo apt-get update
-          sudo apt-get install -y binaryen
+          sudo apt-get install -y binaryen tree
 
       - name: Build with wasm-pack
         run: wasm-pack build --target web
 
+      # - name: Optimize
+      #   run: wasm-opt -Oz -o ./pkg/image_data.wasm ./pkg/image_data.wasm
       - name: Optimize
-        run: wasm-opt -Oz -o ./pkg/image_data.wasm ./pkg/image_data.wasm
+        run: |
+          tree
+          exit 1
 
       - name: Copy wasm to ts folder
         run: rsync -av --exclude='.gitignore' --exclude='*.md' --exclude='*.json' ./pkg/ ./ts/wasm/
