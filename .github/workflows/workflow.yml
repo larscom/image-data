@@ -30,7 +30,7 @@ jobs:
         run: wasm-pack build --target web
 
       - name: Optimize
-        run: wasm-opt -Oz -o ./pkg/image_data_bg.wasm.wasm ./pkg/image_data_bg.wasm.wasm
+        run: wasm-opt -Oz -o ./pkg/image_data_bg.wasm ./pkg/image_data_bg.wasm
 
       - name: Copy wasm to ts folder
         run: rsync -av --exclude='.gitignore' --exclude='*.md' --exclude='*.json' ./pkg/ ./ts/wasm/
