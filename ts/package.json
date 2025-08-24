@@ -1,7 +1,7 @@
 {
   "name": "@larscom/image-data",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "files": [
     "./index.js",
     "./index.d.ts",
@@ -14,6 +14,29 @@
   "sideEffects": [
     "./snippets/*"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "get ImageData object from URL or ArrayBuffer without creating a canvas (using wasm)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/larscom/image-data"
+  },
+  "keywords": [
+    "img",
+    "image",
+    "png",
+    "image-data",
+    "arraybuffer",
+    "canvas",
+    "wasm"
+  ],
+  "author": "Lars Kniep",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/larscom/image-data/issues"
+  },
+  "homepage": "https://github.com/larscom/image-data#readme",
   "devDependencies": {
     "typescript": "^5.9.2"
   }
