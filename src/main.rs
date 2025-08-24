@@ -1,4 +1,5 @@
 use image::{GenericImageView, Pixel};
+use std::process;
 use std::{error::Error, fs};
 
 use wasm_bindgen::prelude::*;
@@ -46,7 +47,7 @@ impl Image {
 
 #[wasm_bindgen]
 pub fn get_image(image_bytes: &[u8]) -> Image {
-    let img = image::load_from_memory(image_bytes).expect("failed to load image");
+    let img = image::load_from_memory(image_bytes).unwrap_or_else(|_| process::abort());
     let data = img
         .pixels()
         .map(|p| p.2.channels().to_vec())
