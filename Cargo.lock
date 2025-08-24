@@ -253,14 +253,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "file-inspector"
-version = "0.1.0"
-dependencies = [
- "image",
- "wasm-bindgen",
-]
-
-[[package]]
 name = "flate2"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -346,6 +338,14 @@ dependencies = [
  "tiff",
  "zune-core",
  "zune-jpeg",
+]
+
+[[package]]
+name = "image-data"
+version = "0.0.0"
+dependencies = [
+ "image",
+ "wasm-bindgen",
 ]
 
 [[package]]

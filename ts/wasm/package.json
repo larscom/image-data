@@ -1,0 +1,15 @@
+{
+  "name": "image-data",
+  "type": "module",
+  "version": "0.0.0",
+  "files": [
+    "image_data_bg.wasm",
+    "image_data.js",
+    "image_data.d.ts"
+  ],
+  "main": "image_data.js",
+  "types": "image_data.d.ts",
+  "sideEffects": [
+    "./snippets/*"
+  ]
+}

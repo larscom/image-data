@@ -1,6 +1,6 @@
 [package]
-name = "file-inspector"
-version = "0.1.0"
+name = "image-data"
+version = "0.0.0"
 edition = "2024"
 
 [profile.release]

@@ -5,9 +5,9 @@
   "files": [
     "./index.js",
     "./index.d.ts",
-    "./pkg/file_inspector_bg.wasm",
-    "./pkg/file_inspector.js",
-    "./pkg/file_inspector.d.ts"
+    "./pkg/image_data_bg.wasm",
+    "./pkg/image_data.js",
+    "./pkg/image_data.d.ts"
   ],
   "main": "index.js",
   "types": "index.d.ts",

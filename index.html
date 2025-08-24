@@ -4,23 +4,19 @@
     <meta charset="utf-8" />
     <title>hello-wasm example</title>
   </head>
-  <body>    
+  <body>
     <script type="module">
-      import { load_from_arraybuffer } from './ts/index.js'      
+      import { load_from_url } from './ts/index.js'
 
-      const data = await fetch('image.png')
-      const buf = await data.arrayBuffer()
-
-      const imageData = await load_from_arraybuffer(buf)
-       const imageData2 = await load_from_arraybuffer(buf)
+      const image = await load_from_url('image.png')
 
       const canvas = document.getElementById('canvas')
-      canvas.width = 800
-      canvas.height = 600
+      canvas.width = image.width
+      canvas.height = image.height
 
       const ctx = canvas.getContext('2d')
 
-      ctx.putImageData(imageData, 0, 0)
+      ctx.putImageData(image.data, 0, 0)
     </script>
     <canvas id="canvas"></canvas>
   </body>
