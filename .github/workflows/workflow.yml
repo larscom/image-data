@@ -19,19 +19,11 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
 
       - name: Install wasm-pack
-        run: cargo install wasm-pack
-
-      - name: Install Binaryen (wasm-opt)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y binaryen tree
+        run: cargo install wasm-pack 
 
       - name: Build with wasm-pack
         run: wasm-pack build --target web
-
-      - name: Optimize
-        run: wasm-opt -Oz -o ./pkg/image_data_bg.wasm ./pkg/image_data_bg.wasm
-
+   
       - name: Copy wasm to ts folder
         run: rsync -av --exclude='.gitignore' --exclude='*.md' --exclude='*.json' ./pkg/ ./ts/wasm/
 
@@ -45,7 +37,7 @@ jobs:
       - name: Compile ts
         run: (cd ts && npm ci --ignore-scripts --legacy-peer-deps && tsc -p tsconfig.json)
 
-      - name: Publish NPM
+      - name: Publish npm
         if: startsWith(github.ref, 'refs/tags/')     
         run: |
           cp README.md ts
