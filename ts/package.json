@@ -13,5 +13,8 @@
   "types": "index.d.ts",
   "sideEffects": [
     "./snippets/*"
-  ]
+  ],
+  "devDependencies": {
+    "typescript": "^5.9.2"
+  }
 }

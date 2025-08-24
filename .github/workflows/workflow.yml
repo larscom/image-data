@@ -40,7 +40,7 @@ jobs:
           node-version: 22
 
       - name: Compile ts
-        run: (cd ts && npx tsc -p tsconfig.json)
+        run: (cd ts && npm ci --ignore-scripts --legacy-peer-deps && tsc -p tsconfig.json)
 
       - name: Output stuff
         run: tree
