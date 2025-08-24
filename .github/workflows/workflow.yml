@@ -21,8 +21,10 @@ jobs:
       - name: Install wasm-pack
         run: cargo install wasm-pack
 
-      - name: Install wasm-opt
-        run: cargo install wasm-opt
+      - name: Install Binaryen (wasm-opt)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y binaryen
 
       - name: Build with wasm-pack
         run: wasm-pack build --target web
