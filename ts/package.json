@@ -1,13 +1,13 @@
 {
-  "name": "image-data",
+  "name": "@larscom/image-data",
   "type": "module",
   "version": "0.0.1",
   "files": [
     "./index.js",
     "./index.d.ts",
-    "./pkg/image_data_bg.wasm",
-    "./pkg/image_data.js",
-    "./pkg/image_data.d.ts"
+    "./wasm/image_data_bg.wasm",
+    "./wasm/image_data.js",
+    "./wasm/image_data.d.ts"
   ],
   "main": "index.js",
   "types": "index.d.ts",

@@ -1,0 +1,45 @@
+name: workflow
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Install wasm-pack
+        run: cargo install wasm-pack
+
+      - name: Install wasm-opt
+        run: cargo install wasm-opt
+
+      - name: Build with wasm-pack
+        run: wasm-pack build --target web
+
+      - name: Optimize
+        run: wasm-opt -Oz -o ./pkg/image_data.wasm ./pkg/image_data.wasm
+
+      - name: Copy wasm to ts folder
+        run: rsync -av --exclude='.gitignore' --exclude='*.md' --exclude='*.json' ./pkg/ ./ts/wasm/
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Compile ts
+        run: (cd ts && npx tsc -p tsconfig.json)
+
+      - name: Output stuff
+        run: ls -ltra ./ts
