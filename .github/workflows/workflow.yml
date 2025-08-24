@@ -29,12 +29,8 @@ jobs:
       - name: Build with wasm-pack
         run: wasm-pack build --target web
 
-      # - name: Optimize
-      #   run: wasm-opt -Oz -o ./pkg/image_data.wasm ./pkg/image_data.wasm
       - name: Optimize
-        run: |
-          tree
-          exit 1
+        run: wasm-opt -Oz -o ./pkg/image_data_bg.wasm.wasm ./pkg/image_data_bg.wasm.wasm
 
       - name: Copy wasm to ts folder
         run: rsync -av --exclude='.gitignore' --exclude='*.md' --exclude='*.json' ./pkg/ ./ts/wasm/
@@ -48,4 +44,4 @@ jobs:
         run: (cd ts && npx tsc -p tsconfig.json)
 
       - name: Output stuff
-        run: ls -ltra ./ts
+        run: tree
