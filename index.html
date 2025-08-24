@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>hello-wasm example</title>
+  </head>
+  <body>
+    <script type="module">
+      import init, { get_pixels } from './pkg/file_inspector.js'
+
+      await init()
+
+      const data = await fetch('image.png')
+      const buf = await data.arrayBuffer()
+
+      const image = get_pixels(new Uint8Array(buf))
+
+      const width = image.width()
+      const height = image.height()
+
+      const pixels = new Uint8ClampedArray(image.data().buffer)
+
+      const imageData = new ImageData(pixels, width, height)
+
+      const canvas = document.getElementById('canvas')
+      canvas.width = width
+      canvas.height = height
+
+      const ctx = canvas.getContext('2d')
+
+      ctx.putImageData(imageData, 0, 0)
+    </script>
+    <canvas id="canvas"></canvas>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+[package]
+name = "file-inspector"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+path = "src/main.rs"
+
+[dependencies]
+image = "0.25.6"
+wasm-bindgen = "0.2.100"
