@@ -8,7 +8,6 @@ opt-level = 'z'
 
 [lib]
 crate-type = ["cdylib", "rlib"]
-path = "src/main.rs"
 
 [dependencies]
 image = "0.25.6"

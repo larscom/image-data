@@ -1,19 +1,4 @@
-use image::{GenericImageView, Pixel};
-use std::process;
-use std::{error::Error, fs};
-
-use wasm_bindgen::prelude::*;
-
-fn main() -> Result<(), Box<dyn Error>> {
-    let file_path = "./image.png";
-    let img_bytes = fs::read(file_path)?;
-
-    let image = get_image(img_bytes.as_slice());
-    assert_eq!(image.width(), 800);
-    assert_eq!(image.height(), 600);
-
-    Ok(())
-}
+use wasm_bindgen::prelude::wasm_bindgen;
 
 #[wasm_bindgen]
 pub struct Image {
@@ -47,6 +32,9 @@ impl Image {
 
 #[wasm_bindgen]
 pub fn get_image(image_bytes: &[u8]) -> Image {
+    use image::{GenericImageView, Pixel};
+    use std::process;
+
     let img = image::load_from_memory(image_bytes).unwrap_or_else(|_| process::abort());
     let data = img
         .pixels()
