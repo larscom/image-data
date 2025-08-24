@@ -13,7 +13,7 @@
       const data = await fetch('image.png')
       const buf = await data.arrayBuffer()
 
-      const image = get_pixels(new Uint8Array(buf))
+      const image = get_image(new Uint8Array(buf))
 
       const width = image.width()
       const height = image.height()
