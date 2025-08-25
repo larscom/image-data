@@ -6,6 +6,7 @@ export interface Image {
   width: number
   height: number
   data: ImageData
+  channels: Uint8Array<ArrayBuffer>
 }
 
 export async function load_from_url(url: RequestInfo): Promise<Image> {
@@ -23,8 +24,9 @@ export async function load_from_arraybuffer(buffer: ArrayBuffer): Promise<Image>
   const image = get_image(new Uint8Array(buffer))
   const width = image.width()
   const height = image.height()
+  const channels = image.data()
   const data = new ImageData(
-    new Uint8ClampedArray(image.data().buffer) as Uint8ClampedArray<ArrayBuffer>,
+    new Uint8ClampedArray(channels.buffer) as Uint8ClampedArray<ArrayBuffer>,
     width,
     height
   )
@@ -32,6 +34,7 @@ export async function load_from_arraybuffer(buffer: ArrayBuffer): Promise<Image>
   return {
     width,
     height,
-    data
+    data,
+    channels
   }
 }
