@@ -55,4 +55,4 @@ Not all image formats are supported at the moment. This might change in the futu
 | PNG        | ✅        |
 | AVIF       | ❌        |
 | SVG        | ❌        |
-| Other      | ❔        |
+| Other      | ❓        |
