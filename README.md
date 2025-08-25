@@ -44,3 +44,15 @@ export default defineConfig({
   }
 })
 ```
+
+## Supported formats
+
+Not all image formats are supported at the moment. This might change in the future.
+
+| Format     | Supported |
+| ---------- | --------- |
+| JPG / JPEG | ✅        |
+| PNG        | ✅        |
+| AVIF       | ❌        |
+| SVG        | ❌        |
+| Other      | ❔        |
