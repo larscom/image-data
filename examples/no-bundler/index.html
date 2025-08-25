@@ -2,13 +2,17 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>hello-wasm example</title>
+    <title>No Bundler</title>
   </head>
   <body>
-    <script type="module">
-      import { load_from_url } from './ts/index.js'
+    <canvas id="canvas"></canvas>
 
-      const image = await load_from_url('image.png')
+    <script type="module">
+      import { load_from_url } from './node_modules/@larscom/image-data/index.js'
+
+      const image = await load_from_url(
+        'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png'
+      )
 
       const canvas = document.getElementById('canvas')
       canvas.width = image.width
@@ -18,6 +22,5 @@
 
       ctx.putImageData(image.data, 0, 0)
     </script>
-    <canvas id="canvas"></canvas>
   </body>
 </html>
