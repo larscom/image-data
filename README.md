@@ -34,7 +34,7 @@ ctx.putImageData(image.data, 0, 0)
 
 When using a build tool such as [vite](https://github.com/vitejs/vite) you need additional configuration as it doesn't serve \*.wasm files by default (see examples folder for a `vite-react-ts` project)
 
-> add `optimizeDeps` to `vite.config.ts`
+> add `exclude` option in `optimizeDeps` to `vite.config.ts`
 
 ```ts
 export default defineConfig({
@@ -47,12 +47,21 @@ export default defineConfig({
 
 ## Supported formats
 
-Not all image formats are supported at the moment. This might change in the future.
-
-| Format     | Supported |
-| ---------- | --------- |
-| JPG / JPEG | ✅        |
-| PNG        | ✅        |
-| AVIF       | ❌        |
-| SVG        | ❌        |
-| Other      | ❓        |
+| Format   | Supported |
+| -------- | --------- |
+| JPEG     | ✅        |
+| PNG      | ✅        |
+| BMP      | ✅        |
+| DDS      | ✅        |
+| FARBFELD | ✅        |
+| GIF      | ✅        |
+| HDR      | ✅        |
+| ICO      | ✅        |
+| EXR      | ✅        |
+| PNM      | ✅        |
+| QOI      | ✅        |
+| TGA      | ✅        |
+| TIFF     | ✅        |
+| WEBP     | ✅        |
+| AVIF     | ❌        |
+| SVG      | ❌        |
