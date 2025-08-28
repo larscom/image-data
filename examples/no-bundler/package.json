@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "serve ."
+    "start": "serve .",
+    "dev": "serve ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@larscom/image-data": "^0.0.2"
+    "@larscom/image-data": "^0.1.0"
   },
   "devDependencies": {
     "serve": "^14.2.4"

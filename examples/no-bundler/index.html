@@ -10,11 +10,11 @@
     <script type="module">
       import { load_from_url } from './node_modules/@larscom/image-data/index.js'
 
-      const image = await load_from_url(
-        'https://upload.wikimedia.org/wikipedia/commons/6/65/Blue_morpho_butterfly.jpg'
-      )
+      const imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/6/65/Blue_morpho_butterfly.jpg'
+      const image = await load_from_url(imageUrl)
 
       const canvas = document.getElementById('canvas')
+      
       canvas.width = image.width
       canvas.height = image.height
 
