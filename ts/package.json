@@ -17,7 +17,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "description": "get ImageData object from URL or ArrayBuffer without creating a canvas (using wasm)",
+  "description": "create ImageData object from URL or ArrayBuffer without creating a canvas (using wasm)",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/larscom/image-data"
