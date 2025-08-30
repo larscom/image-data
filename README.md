@@ -4,7 +4,7 @@
 ![npm](https://img.shields.io/npm/dw/@larscom/image-data)
 [![license](https://img.shields.io/npm/l/@larscom/image-data.svg)](https://github.com/larscom/image-data/blob/main/LICENSE)
 
-Easily construct an `Image` object from a URL or ArrayBuffer. An `Image` object contains the width and height of the image and an `ImageData` object. It uses `WASM` to construct such an object.
+Easily construct an `Image` object from a URL or ArrayBuffer. An `Image` object contains the width and height of the image and an `ImageData` object as well as the channels (RGBA). It uses `WASM` to construct such an object.
 
 ## Installation
 
@@ -14,10 +14,13 @@ npm install @larscom/image-data
 
 ## Usage
 
+Import the `load_from_url` function to construct an `Image` object.
+
 ```ts
 import { load_from_url } from '@larscom/image-data'
 
 const imageUrl = 'https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png'
+
 const image = await load_from_url(imageUrl)
 
 const canvas = document.getElementById('canvas')
@@ -27,14 +30,25 @@ canvas.height = image.height
 
 const ctx = canvas.getContext('2d')
 
+// use the ImageData object
 ctx.putImageData(image.data, 0, 0)
+```
+
+```ts
+interface Image {
+  width: number
+  height: number
+  data: ImageData
+  // RGBA
+  channels: Uint8Array<ArrayBuffer>
+}
 ```
 
 ## Vite
 
 When using a build tool such as [vite](https://github.com/vitejs/vite) you need additional configuration as it doesn't serve \*.wasm files by default (see examples folder for a `vite-react-ts` project)
 
-> add `exclude` option in `optimizeDeps` to `vite.config.ts`
+> add `exclude` option to `optimizeDeps` to `vite.config.ts`
 
 ```ts
 export default defineConfig({
@@ -43,6 +57,42 @@ export default defineConfig({
     exclude: ['@larscom/image-data']
   }
 })
+```
+
+## Colors (HEX)
+
+Convert each individual pixel to a HEX color code.
+
+```ts
+import { load_from_url, convert_to_hex_colors } from '@larscom/image-data'
+
+const imageUrl = 'https://example.com/image.png'
+const image = await load_from_url(imageUrl)
+
+const colors = convert_to_hex_colors(image.channels)
+
+console.log(colors) // ["#FF5733", "#33C1FF", "#28A745", ...]
+```
+
+## Colors (RGBA)
+
+Decode the raw channel data into an array of pixels (RGBA)
+
+```ts
+import { load_from_url, decode_to_rgba } from '@larscom/image-data'
+
+const imageUrl = 'https://example.com/image.png'
+const image = await load_from_url(imageUrl)
+
+const pixels = decode_to_rgba(image.channels)
+
+console.log(pixels)
+// [
+//  { r: 255, g: 0,   b: 0,   a: 255 },
+//  { r: 0,   g: 255, b: 0,   a: 128 },
+//  { r: 0,   g: 0,   b: 255, a: 64  },
+//  ...
+// ]
 ```
 
 ## Supported formats
