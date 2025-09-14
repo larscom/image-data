@@ -76,4 +76,16 @@ mod tests {
         assert_eq!(image.height(), 730);
         assert!(!image.data().is_empty());
     }
+
+    #[test]
+    fn test_webp_image() {
+        let path = "./test_data/3_image.webp";
+        let image_bytes = fs::read(path).unwrap();
+
+        let image = get_image(image_bytes.as_slice());
+
+        assert_eq!(image.width(), 1024);
+        assert_eq!(image.height(), 940);
+        assert!(!image.data().is_empty());
+    }
 }
