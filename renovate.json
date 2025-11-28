@@ -1,9 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "dependencyDashboard": false,
-  "dependencyDashboardApproval": false,
   "extends": [
     "config:recommended"
+  ],
+  "ignorePresets": [
+    ":dependencyDashboard"
   ],
   "packageRules": [
     {
