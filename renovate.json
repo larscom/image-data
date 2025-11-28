@@ -1,10 +1,10 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "dependencyDashboard": false,
+  "dependencyDashboardApproval": false,
   "extends": [
     "config:recommended"
   ],
-  "dependencyDashboard": false,
-  "dependencyDashboardApproval": false,
   "packageRules": [
     {
       "description": "Automerge non-major updates",
