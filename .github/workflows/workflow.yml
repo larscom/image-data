@@ -11,6 +11,10 @@ on:
     branches:
       - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,9 +41,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: 24
-          registry-url: https://registry.npmjs.org/
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          registry-url: https://registry.npmjs.org/ 
 
       - name: Compile ts
         run: (cd ts && npm ci --ignore-scripts --legacy-peer-deps && tsc -p tsconfig.json)
