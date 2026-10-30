@@ -38,7 +38,7 @@ jobs:
       - name: Copy wasm to ts folder
         run: rsync -av --exclude='.gitignore' --exclude='*.md' --exclude='*.json' ./pkg/ ./ts/wasm/
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
           registry-url: https://registry.npmjs.org/ 
